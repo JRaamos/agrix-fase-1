@@ -19,6 +19,9 @@ public class FarmsService {
   private final FamsRepositorie famsRepositorie;
   private final CropsRepositorie cropsRepositorie;
 
+  /**
+   * Crontuctor.
+   */
   @Autowired
   public FarmsService(FamsRepositorie famsRepositorie, CropsRepositorie cropsRepositorie) {
 

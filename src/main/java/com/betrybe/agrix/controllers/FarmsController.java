@@ -1,8 +1,11 @@
 package com.betrybe.agrix.controllers;
 
 
+import static com.betrybe.agrix.util.CropsUtil.cropResponseconvert;
+import static com.betrybe.agrix.util.CropsUtil.cropsDtoCreateConvert;
 import static com.betrybe.agrix.util.FarmsUtil.farmResponseconvert;
 import static com.betrybe.agrix.util.FarmsUtil.farmsDtoCreateConvert;
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 import com.betrybe.agrix.dtos.CropRequest;
 import com.betrybe.agrix.dtos.CropsResponse;
@@ -11,6 +14,7 @@ import com.betrybe.agrix.dtos.FarmResponse;
 import com.betrybe.agrix.models.entities.Crops;
 import com.betrybe.agrix.models.entities.Farms;
 import com.betrybe.agrix.service.FarmsService;
+import com.betrybe.agrix.util.CropsUtil;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,6 +74,12 @@ public class FarmsController {
   /**
    * Metodo para criar crops.
    */
-
+  @PostMapping("/{farmId}/crops")
+  public ResponseEntity<CropsResponse> createCrops(@PathVariable Long farmId,
+      @RequestBody CropRequest crops) {
+    Crops crop = farmsService.cropsCreate(farmId, cropsDtoCreateConvert(crops));
+    CropsResponse cropsResponse = cropResponseconvert(crop);
+    return ResponseEntity.status(HttpStatus.CREATED).body(cropsResponse);
+  }
 }
 

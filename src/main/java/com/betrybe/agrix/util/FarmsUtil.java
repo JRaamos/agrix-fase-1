@@ -5,7 +5,7 @@ import com.betrybe.agrix.dtos.FarmResponse;
 import com.betrybe.agrix.models.entities.Farms;
 
 /**
- * Clase util para farm.
+ * Classe util para farm.
  */
 public class FarmsUtil {
 

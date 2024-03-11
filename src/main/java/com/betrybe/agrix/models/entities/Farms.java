@@ -15,7 +15,7 @@ public class Farms {
 
   private Long id;
   private String name;
-  private int size;
+  private Double size;
 
   public Long getId() {
     return id;
@@ -33,11 +33,11 @@ public class Farms {
     this.name = name;
   }
 
-  public int getSize() {
+  public Double getSize() {
     return size;
   }
 
-  public void setSize(int size) {
+  public void setSize(Double size) {
     this.size = size;
   }
 

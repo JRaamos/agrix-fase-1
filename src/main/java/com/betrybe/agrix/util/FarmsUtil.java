@@ -1,7 +1,7 @@
 package com.betrybe.agrix.util;
 
-import com.betrybe.agrix.dtos.FarmRequestDTO;
-import com.betrybe.agrix.dtos.FarmResponseDTO;
+import com.betrybe.agrix.dtos.FarmRequest;
+import com.betrybe.agrix.dtos.FarmResponse;
 import com.betrybe.agrix.models.entities.Farms;
 
 /**
@@ -9,20 +9,24 @@ import com.betrybe.agrix.models.entities.Farms;
  */
 public class FarmsUtil {
 
-  public static FarmResponseDTO farmResponseconvert(Farms farm) {
-    return new FarmResponseDTO(
+  /**
+   * Metodo para DTO convert.
+   */
+  public static FarmResponse farmResponseconvert(Farms farm) {
+    return new FarmResponse(
         farm.getId(),
         farm.getName(),
         farm.getSize()
     );
   }
-  public  static Farms farmsDtoCreateConvert(FarmRequestDTO farmRequestDTO) {
-    Farms farm = new Farms();
 
-        farm.setName(farmRequestDTO.name());
-        farm.setSize(farmRequestDTO.size());
+  /**
+   * Metodo para DTO convert.
+   */
+  public  static Farms farmsDtoCreateConvert(FarmRequest farmRequest) {
+    Farms farm = new Farms();
+    farm.setName(farmRequest.name());
+    farm.setSize(farmRequest.size());
     return farm;
   }
-
-
 }

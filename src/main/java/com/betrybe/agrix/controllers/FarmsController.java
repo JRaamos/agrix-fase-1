@@ -4,8 +4,11 @@ package com.betrybe.agrix.controllers;
 import static com.betrybe.agrix.util.FarmsUtil.farmResponseconvert;
 import static com.betrybe.agrix.util.FarmsUtil.farmsDtoCreateConvert;
 
+import com.betrybe.agrix.dtos.CropRequest;
+import com.betrybe.agrix.dtos.CropsResponse;
 import com.betrybe.agrix.dtos.FarmRequest;
 import com.betrybe.agrix.dtos.FarmResponse;
+import com.betrybe.agrix.models.entities.Crops;
 import com.betrybe.agrix.models.entities.Farms;
 import com.betrybe.agrix.service.FarmsService;
 import java.util.List;
@@ -63,5 +66,10 @@ public class FarmsController {
     Farms farm = farmsService.findByFarmId(id);
     return ResponseEntity.status(HttpStatus.OK).body(farmResponseconvert(farm));
   }
+
+  /**
+   * Metodo para criar crops.
+   */
+
 }
 

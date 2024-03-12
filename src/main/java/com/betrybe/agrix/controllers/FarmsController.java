@@ -81,5 +81,13 @@ public class FarmsController {
     CropsResponse cropsResponse = cropResponseconvert(crop);
     return ResponseEntity.status(HttpStatus.CREATED).body(cropsResponse);
   }
+
+  /**
+   * Metodo para buscar todos os crops conforme o id do farms.
+   */
+  @GetMapping("/{farmId}/crops")
+  public List<CropsResponse> getAllCropsInFarm(@PathVariable Long farmId) {
+    return farmsService.findAllByFarmIdCrops(farmId).stream().map(CropsUtil::cropResponseconvert).collect(Collectors.toList());
+  }
 }
 

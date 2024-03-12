@@ -87,7 +87,8 @@ public class FarmsController {
    */
   @GetMapping("/{farmId}/crops")
   public List<CropsResponse> getAllCropsInFarm(@PathVariable Long farmId) {
-    return farmsService.findAllByFarmIdCrops(farmId).stream().map(CropsUtil::cropResponseconvert).collect(Collectors.toList());
+    return farmsService.findAllByFarmIdCrops(farmId).stream()
+        .map(CropsUtil::cropResponseconvert).collect(Collectors.toList());
   }
 }
 

@@ -67,7 +67,7 @@ public class FarmsService {
    */
   public List<Crops> findAllByFarmIdCrops(Long id) {
     Optional<Farms> farmptional = famsRepositorie.findById(id);
-    if (farmptional.isPresent()){
+    if (farmptional.isPresent()) {
       return farmptional.get().getCrops();
     }
     throw new FarmsException();

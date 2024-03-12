@@ -19,6 +19,9 @@ public class CropsController {
   @Autowired
   private CropsService cropsService;
 
+  /**
+   * Metodo para buscar.
+   */
   @GetMapping
 public List<CropsResponse> getAllCrops() {
     return cropsService.findAllCrops().stream()

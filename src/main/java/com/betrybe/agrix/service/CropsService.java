@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 public class CropsService {
   @Autowired
   private CropsRepositorie cropsRepositorie;
+
   public List<Crops> findAllCrops() {
     return cropsRepositorie.findAll();
   }

@@ -16,6 +16,7 @@ public class ControllerException {
   public ResponseEntity<String> handleFarmNotFoundException(FarmsException e) {
     return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Fazenda não encontrada!");
   }
+
   @ExceptionHandler(CropsException.class)
   public ResponseEntity<String> handleCropNotFoundException(CropsException e) {
     return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Plantação não encontrada!");

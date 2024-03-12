@@ -1,9 +1,13 @@
-services:
+FROM maven:3-openjdk-17 as build-image
+WORKDIR /to-build-app
+COPY . .
 
-  mysql:
-    image: mysql:8.0.32
-    restart: always
-    ports:
-      - 3306:3306
-    environment:
-      MYSQL_ROOT_PASSWORD: root
+RUN mvn dependency:go-offline
+COPY src ./src
+RUN mvn package -DskipTests
+
+FROM eclipse-temurin:17-jre-alpine
+WORKDIR /app
+COPY --from=build-image /to-build-app/target/*.jar ./app.jar
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "app.jar"]
